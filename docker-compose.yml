@@ -1,0 +1,32 @@
+services:
+  # PHP + Apache Service
+  app:
+    container_name: php-app-container
+    build: .
+    ports:
+      - "8080:80"  # Map host port 8080 to container port 80
+    volumes:
+      - ./src:/var/www/html  # Live code reloading
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=task_manager
+      - DB_USER=postgres
+      - DB_PASSWORD=secret
+
+  # PostgreSQL Service
+  db:
+    container_name: postgres-db-container
+    image: postgres:15
+    environment:
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=task_manager
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Persistent data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # SQL to execute on startup
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata: 
