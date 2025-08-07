@@ -1,11 +1,12 @@
-
 CREATE TABLE users(
-    id integer generated always as identity primary key,
-    first varchar(50),
-    last varchar(50)
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    first VARCHAR(50),
+    last VARCHAR(50),
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
-
-INSERT INTO users (first, last) values ('Test', '1234'), ('Test 2', '5678');
 
 -- Admin user (full access)
 CREATE ROLE admin_user WITH LOGIN PASSWORD 'adminpass' SUPERUSER;

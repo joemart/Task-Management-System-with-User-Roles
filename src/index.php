@@ -1,12 +1,5 @@
 <?php
-require "./includes/config.php";
+define("BASE_PATH", __DIR__);
+require "./config/database.php";
 
-
-$stmt = $db->query("SELECT * FROM users");
-$users = $stmt->fetchAll();
-$user = $stmt->fetch();
-foreach($users as $user)
-{
-    echo "ID: {$user['id']}, Name: {$user['first']} {$user['last']}";
-}
 
