@@ -9,11 +9,13 @@ class Validator {
     private const email_middle_max = 10;
     private const email_last_min = 1; 
     private const email_last_max = 8;
-
+    private const name_min = 1;
+    private const name_max = 49;
 
     private const PATTERNS = [
         "username" => "/^[a-zA-Z0-9\-\_]{". self::username_min . ",". self::username_max . "}$/",
-        "email" => "/^[a-zA-Z0-9\-\_]{". self::email_first_min .", ". self::email_first_max ."}\@[a-zA-Z0-9\-]{" . self::email_middle_min .",". self::email_middle_max ."}\.[a-zA-Z]{". self::email_last_min .",". self::email_last_max ."}$/"
+        "email" => "/^[a-zA-Z0-9\-\_]{". self::email_first_min .", ". self::email_first_max ."}\@[a-zA-Z0-9\-]{" . self::email_middle_min .",". self::email_middle_max ."}\.[a-zA-Z]{". self::email_last_min .",". self::email_last_max ."}$/",
+        "name" => "/^[a-zA-Z][a-zA-Z\s]{". self::name_min ."," . self::name_max ."}$/"
     ];
 
     public static function validate_regexp($type, $subject){
@@ -23,6 +25,9 @@ class Validator {
                 throw new InvalidArgumentException("Username must be between ". self::username_min ." to ". self::username_max ." letters");
             if($type == "email")
                 throw new InvalidArgumentException("Email doesn't meet the requirements set!");
+            if($type == "name")
+                throw new InvalidArgumentException("Name doesn't meet the requirements set!");
+            
         }
         return true;
     }

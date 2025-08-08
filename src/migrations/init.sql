@@ -10,6 +10,7 @@ INSERT INTO user_roles VALUES ('Admin', 'This is the Admin role. You have contro
 CREATE TABLE users(
 
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
     username VARCHAR(50) NOT NULL,
     email varchar(100) UNIQUE,
     password VARCHAR(255) NOT NULL,

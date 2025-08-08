@@ -19,22 +19,22 @@ class User {
     }
 
     //Add user's username, email, password and role_id
-    public function add($username, $email, $password, $role_id = "Regular User"){
+    public function add($username, $name, $email, $password, $role_id = "Regular User"){
         
         try{
             
             Validator::validate_regexp("username", $username);
-            
             Validator::validate_email($email);
-            
+            Validator::validate_regexp("name", $name);
             $hashed = password_hash($password, PASSWORD_DEFAULT);
             
             $stmt = $this->db->prepare("INSERT INTO users 
-            (username, email, password, role_id) 
-            VALUES (:username, :email, :password, :role_id)");
+            (username, name, email, password, role_id) 
+            VALUES (:username, :name, :email, :password, :role_id)");
             
              $stmt->execute([
                 ':username' => $username,
+                ':name' => $name,
                 ':email' => $email,
                 ':password' => $hashed,
                 ':role_id' => $role_id

@@ -19,7 +19,7 @@ class UserAuthController {
 
     //Add user
     public function add(){
-        $this->model->add("joemart", "joefas@gma.sdf", "sadfasd");
+        $this->model->add("joemart", "Joe mamma", "joefas@gma.sdf", "sadfasd");
         header("Location: public/index.php");
         exit();
     }
