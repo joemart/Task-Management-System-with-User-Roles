@@ -1,12 +1,27 @@
+CREATE TYPE role AS ENUM ('Admin', 'Manager', 'Regular User');
+CREATE TABLE user_roles(
+    name role NOT NULL PRIMARY KEY,
+    description TEXT
+);
+INSERT INTO user_roles VALUES ('Admin', 'This is the Admin role. You have control over everything.'),
+('Manager', 'This is the Manager role. You have some control over other user''s accounts. '),
+('Regular User', 'This is the Regular User role. This is a standard role for everyone.');
+
 CREATE TABLE users(
+
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    first VARCHAR(50),
-    last VARCHAR(50),
     username VARCHAR(50) NOT NULL,
+    email varchar(100) UNIQUE,
     password VARCHAR(255) NOT NULL,
+    role_id role NOT NULL REFERENCES user_roles(name) DEFAULT 'Regular User',
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+
 );
+
+
+
+
 
 -- Admin user (full access)
 CREATE ROLE admin_user WITH LOGIN PASSWORD 'adminpass' SUPERUSER;
