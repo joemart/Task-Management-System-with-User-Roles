@@ -24,7 +24,7 @@ services:
       - POSTGRES_DB=task_manager
     volumes:
       - pgdata:/var/lib/postgresql/data  # Persistent data
-      - ./migrations/init.sql:/docker-entrypoint-initdb.d/init.sql  # SQL to execute on startup
+      - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql  # SQL to execute on startup
     ports:
       - "5432:5432"
 
