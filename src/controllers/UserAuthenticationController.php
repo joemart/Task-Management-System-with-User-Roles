@@ -18,8 +18,8 @@ class UserAuthController {
     }
 
     //Add user
-    public function add(){
-        $this->model->add("joemart", "Joe mamma", "joefas@gma.sdf", "sadfasd");
+    public function add($username, $name, $email, $password){
+        $this->model->add($username, $name, $email, $password);
         header("Location: public/index.php");
         exit();
     }

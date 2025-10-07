@@ -40,8 +40,12 @@ class User {
                 ':role_id' => $role_id
             ]);
             
-        }  catch (InvalidArgumentException $e){
-            echo $e->getMessage();
+        }  catch (PDOException $e){
+            if($e->getCode() == "42710"){
+                throw new Exception("Username already exists!");
+            }
+            else 
+                echo $e->getMessage();
         }     
         
 }
