@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management System with User Roles</title>
-    <link rel="stylesheet" type="text/css" href="./views/home/home.css">
+    <?php foreach($cssFiles as $cssFile): ?>
+    <link rel="stylesheet" type="text/css" href="./views/<?= $cssFile ?>">
+    <?php endforeach; ?>
 </head>
 <body>
     <nav class="navbar">
