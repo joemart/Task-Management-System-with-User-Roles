@@ -6,7 +6,6 @@ require "./config/database.php";
 require_once BASE_PATH . "/controllers/UserAuthenticationController.php";
 
 // dd($db);
-$user = new UserAuthController($db);
-$user->add("joemart", "Joe mamma", "joefas@gma.sdf", "sadfasd");
+require "./views/home/home.view.php";
 
 
