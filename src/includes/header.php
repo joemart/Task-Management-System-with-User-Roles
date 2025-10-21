@@ -16,7 +16,7 @@
             <!-- If not logged in -->
              <?php if (!false): ?>
             <li>Log in</li>
-            <li>Register</li>
+            <li><a href="/register">Register</a></li>
             <?php endif; ?>
 
             <!-- If logged in -->

@@ -7,6 +7,7 @@ services:
       - "8080:80"  # Map host port 8080 to container port 80
     volumes:
       - ./src:/var/www/html  # Live code reloading
+      - ./apache.conf:/etc/apache2/sites-available/000-default.conf
     depends_on:
       - db
     environment:
