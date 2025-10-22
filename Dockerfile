@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y \
 # Enable Apache rewrite module (for clean URLs)
 RUN a2enmod rewrite
 
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Copy PHP files to container
 COPY src/ /var/www/html/

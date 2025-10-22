@@ -1,18 +1,24 @@
 <?php 
-$cssFiles = ["register/index.css", "layout.css"];
+$cssFiles = ["register/register.css", "layout.css"];
 require_once('./includes/header.php'); ?>
 
-    <form class="register" method="POST" action="./index.view.php">
-        Registration
-        <ul>
-            <li><input type="text" placeholder="Username" name="username"></li>
-            <li><input type="text" placeholder="Password" name="password"></li>
-            <li><input type="text" placeholder="Email" name="email"></li>
-            <li><input type="text" placeholder="Name" name="name"></li>
-        </ul>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <form class="register" method="POST" action="./index.view.php">
+            <span class="register_text">Registration</span>
+            <ul>
+                <li><input type="text" placeholder="Username" name="username"></li>
+                <li><input type="text" placeholder="Password" name="password"></li>
+                <li><input type="text" placeholder="Email" name="email"></li>
+                <li><input type="text" placeholder="Name" name="name"></li>
+            </ul>
+            <button type="submit">Submit</button>
 
-    <?= $_POST["username"] ?>
+            <span class="register_acc_text">Already have an account? <a href="/login">Log in</a></span>
+        </form>
+        
+    </div>
+
+
+    <?= isset($_POST["username"]) ?? null ?>
 
 <?php require_once('./includes/footer.php'); ?>
