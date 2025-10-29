@@ -10,19 +10,25 @@
 </head>
 <body>
     <nav class="navbar">
-        <div>Home</div>
+        <div>
+            <a class="slider home_button" href="/">
+                <img src="public/images/home.svg" alt="">
+                <span>Home</span>
+            </a>
+        </div>
         <ul class="navbar_account">
 
             <!-- If not logged in -->
              <?php if (!false): ?>
-            <li>Log in</li>
-            <li><a href="/register">Register</a></li>
+            <li class = "navbar_link_container"><a class="slider navbar_link" href="/login">Log in</a></li>
+            <li class = "navbar_link_container"><a class="slider navbar_link" href="/register">Register</a></li>
+
             <?php endif; ?>
 
             <!-- If logged in -->
             <?php if (!true): ?>
-            <li>Log out</li>
-            <li>Account</li>
+            <li class = "navbar_link_container"><a class="slider navbar_link" href="/logout">Log out</a></li>
+            <li class = "navbar_link_container"><a class="slider navbar_link" href="/account">Account</a></li>
             <?php endif; ?>
         </ul>
     </nav>
