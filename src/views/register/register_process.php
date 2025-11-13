@@ -5,9 +5,8 @@ require_once BASE_PATH . '/models/Register.php';
 
 $database = Database::getInstance();
 $db = $database->getConnection();
-
-
 $register = new Register($db);
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $username = $_POST["username"];
@@ -15,6 +14,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    echo $username;
-    // $register->register()
+    $register->register($username, $name, $email, $password);
+    
 }
+
+echo "In register process";

@@ -1,7 +1,7 @@
 <?php
 require_once BASE_PATH . "/validator/UserValidator.php";
 
-session_start();
+// session_start();
 class Register {
     private $db;
 
@@ -16,8 +16,13 @@ class Register {
         return isset($fetch);
     }
 
-    public function register($username, $name, $email, $password, $role_id){
+    public function register($username, $name, $email, $password, $role_id = "Regular User"){
         
+           
+
+
+        try{
+
             //Validate
 
             Validator::validate_all($username, $name, $email, $password);
@@ -27,9 +32,6 @@ class Register {
 
             //hashed password
             $hashed = password_hash($password, PASSWORD_DEFAULT);
-        
-        try{
-
 
             //Query
 
@@ -47,14 +49,18 @@ class Register {
                 ':role_id' => $role_id
             ]);
             
+            header("Location: /");
+            
         }  catch (PDOException $e){
             if($e->getCode() == "42710")
                 throw new Exception("Username already exists!");
-            
         } catch (Exception $e){
 
             //catch any errors
             $_SESSION["register_error"] = $e->getMessage();
+            header("Location: /register");
+
         }
+        exit;
     }
 }

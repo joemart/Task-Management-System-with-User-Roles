@@ -4,7 +4,6 @@ $cssFiles = ["register/register.css", "layout.css"];
 require_once('./includes/header.php'); 
 
 
-
 ?>
 
     <div class="container">
@@ -13,6 +12,7 @@ require_once('./includes/header.php');
             <span class="register_text">Registration</span>
             <ul>
                 <li><input type="text" placeholder="Username" name="username"></li>
+                <?= $_SESSION["validation_errors"]["username"] ?? null ?>
                 <li><input type="password" placeholder="Password" name="password" ></li>
                 <li><input type="text" placeholder="Email" name="email"></li>
                 <li><input type="text" placeholder="Name" name="name"></li>
@@ -24,7 +24,6 @@ require_once('./includes/header.php');
         
     </div>
 
-
-    <?= isset($_POST["username"]) ?? null ?>
+    <?= print_r($_SESSION) ?>
 
 <?php require_once('./includes/footer.php'); ?>

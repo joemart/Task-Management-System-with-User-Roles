@@ -1,5 +1,5 @@
 <?php
-
+// session_start();
 class Validator {
     private const username_min = 3;
     private const username_max = 50;
@@ -41,7 +41,7 @@ class Validator {
                     default => "Validation not met!"
                 };
                  $_SESSION["validation_errors"][$type] = $errorMessage;
-                 
+                 throw new Exception($type);
             }
             
     }
@@ -56,10 +56,10 @@ class Validator {
     */
     public static function validate_email(string $email){
         
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $_SESSION["validation_errors"]["email"] = "$email is an invalid email.";
-            // throw new InvalidArgumentException("$email is an invalid email.");
-        
+            throw new Exception("email");
+        }
     }
 
     /*
