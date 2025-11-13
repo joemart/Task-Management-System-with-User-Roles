@@ -1,13 +1,19 @@
 <?php 
+
 $cssFiles = ["register/register.css", "layout.css"];
-require_once('./includes/header.php'); ?>
+require_once('./includes/header.php'); 
+
+
+
+?>
 
     <div class="container">
-        <form class="register" method="POST" action="./index.view.php">
+
+        <form class="register" method="POST" action="/register-form">
             <span class="register_text">Registration</span>
             <ul>
                 <li><input type="text" placeholder="Username" name="username"></li>
-                <li><input type="text" placeholder="Password" name="password"></li>
+                <li><input type="password" placeholder="Password" name="password" ></li>
                 <li><input type="text" placeholder="Email" name="email"></li>
                 <li><input type="text" placeholder="Name" name="name"></li>
             </ul>
