@@ -10,15 +10,15 @@ require_once('./includes/header.php');
 
         <form class="register" method="POST" action="/register-form">
             <span class="register_text">Registration</span>
-            <ul>
+            <ul class="register_form">
                 <li><input type="text" placeholder="Username" name="username"></li>
-                <?= $_SESSION["validation_errors"]["username"] ?? null ?>
+                <span><?= $_SESSION["validation_errors"]["username"] ?? null ?></span>
                 <li><input type="password" placeholder="Password" name="password" ></li>
-                <?= $_SESSION["validation_errors"]["password"] ?? null ?>
+                <span><?= $_SESSION["validation_errors"]["password"] ?? null ?></span>
                 <li><input type="text" placeholder="Email" name="email"></li>
-                <?= $_SESSION["validation_errors"]["email"] ?? null ?>
+                <span><?= $_SESSION["validation_errors"]["email"] ?? null ?></span>
                 <li><input type="text" placeholder="Name" name="name"></li>
-                <?= $_SESSION["validation_errors"]["name"] ?? null ?>
+                <span><?= $_SESSION["validation_errors"]["name"] ?? null ?></span>
             </ul>
             <button type="submit">Submit</button>
 

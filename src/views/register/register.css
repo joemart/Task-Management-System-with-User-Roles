@@ -61,3 +61,7 @@
 .register_acc_text{
     font-size: 1rem;
 }
+
+.register_form span{
+    color: var(--red-bg);
+}
