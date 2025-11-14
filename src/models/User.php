@@ -49,4 +49,9 @@ class User {
         }     
         
 }
+
+    public function login(){
+        
+    }
+
 }
