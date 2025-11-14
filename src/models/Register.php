@@ -1,7 +1,7 @@
 <?php
 require_once BASE_PATH . "/validator/UserValidator.php";
 
-// session_start();
+
 class Register {
     private $db;
 
@@ -16,17 +16,19 @@ class Register {
         return isset($fetch);
     }
 
-    public function register($username, $name, $email, $password, $role_id = "Regular User"){
+    public function register(string $username, string $name, string $email, string $password, string $role_id = "Regular User"){
         
            
 
 
         try{
+            
+            //Flush errors
+            Validator::flush_errors();
 
             //Validate
-
             Validator::validate_all($username, $name, $email, $password);
-            
+
             //Sanitize
             Validator::sanitize_all($username, $email, $name, $password);
 
@@ -57,7 +59,6 @@ class Register {
         } catch (Exception $e){
 
             //catch any errors
-            $_SESSION["register_error"] = $e->getMessage();
             header("Location: /register");
 
         }

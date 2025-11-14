@@ -14,8 +14,11 @@ require_once('./includes/header.php');
                 <li><input type="text" placeholder="Username" name="username"></li>
                 <?= $_SESSION["validation_errors"]["username"] ?? null ?>
                 <li><input type="password" placeholder="Password" name="password" ></li>
+                <?= $_SESSION["validation_errors"]["password"] ?? null ?>
                 <li><input type="text" placeholder="Email" name="email"></li>
+                <?= $_SESSION["validation_errors"]["email"] ?? null ?>
                 <li><input type="text" placeholder="Name" name="name"></li>
+                <?= $_SESSION["validation_errors"]["name"] ?? null ?>
             </ul>
             <button type="submit">Submit</button>
 
@@ -24,6 +27,5 @@ require_once('./includes/header.php');
         
     </div>
 
-    <?= print_r($_SESSION) ?>
 
 <?php require_once('./includes/footer.php'); ?>
