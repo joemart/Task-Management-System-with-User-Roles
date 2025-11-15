@@ -1,4 +1,4 @@
-.register{
+.form{
     width: 400px;
     height: 500px;
     padding: 1.5rem;
@@ -15,13 +15,13 @@
     gap: 10px;
 }
 
-.register_text{
+.form_text{
     font-size: 3rem;
     align-self: flex-start;
     font-weight: bold;
 }
 
-.register ul {
+.form ul {
         width: 100%;
         list-style: none;
        
@@ -34,19 +34,19 @@
         
 }
 
-.register input {
+.form input {
     width: inherit;
     border-radius: 2rem;
     padding: .5rem;
     font-size: 1.5rem;
 }
 
-.register li {
+.form li {
     width: inherit;
     
 }
 
-.register button{
+.form button{
     width: 100%;
     background: var(--tertiary-color);
     padding: .5rem;
@@ -54,14 +54,14 @@
     font-size: 1.5rem;
 }
 
-.register button:hover{
+.form button:hover{
     cursor: pointer;
 }
 
-.register_acc_text{
+.form_acc_text{
     font-size: 1rem;
 }
 
-.register_form span{
+.form_list span{
     color: var(--red-bg);
 }

@@ -9,12 +9,6 @@ class Register {
         $this->db = $db;
     }
 
-    public function userAvailable($user){
-        $stmt = $this->db->prepare("SELECT ? FROM users");
-        $stmt->execute([$user]);
-        $fetch = $stmt->fetch(PDO::FETCH_ASSOC);
-        return isset($fetch);
-    }
 
     public function register(string $username, string $name, string $email, string $password, string $role_id = "Regular User"){
         
