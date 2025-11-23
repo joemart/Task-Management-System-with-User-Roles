@@ -7,7 +7,8 @@ class Router {
             "/register" => "./views/register/index.view.php",
             "/register-form" => "./views/register/register_process.php",
             "/login" => "./views/login/index.view.php",
-            "/login-form" => "./views/login/login_process.php"
+            "/login-form" => "./views/login/login_process.php",
+            "/logout" => "./views/login/logout_process.php"
         ];
         
         if(array_key_exists($url, $routes)){

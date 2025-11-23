@@ -19,15 +19,15 @@
         <ul class="navbar_account">
 
             <!-- If not logged in -->
-             <?php if (!false): ?>
+             <?php if (!isset($_SESSION["name"])): ?>
             <li class = "navbar_link_container"><a class="slider navbar_link" href="/login">Log in</a></li>
             <li class = "navbar_link_container"><a class="slider navbar_link" href="/register">Register</a></li>
 
             <?php endif; ?>
 
             <!-- If logged in -->
-            <?php if (!true): ?>
-            <li class = "navbar_link_container"><a class="slider navbar_link" href="/logout">Log out</a></li>
+            <?php if (isset($_SESSION["name"])): ?>
+            <form class = "navbar_link_container" method="POST" action="/logout"><button class="slider navbar_link" type="submit">Log out</button></form>
             <li class = "navbar_link_container"><a class="slider navbar_link" href="/account">Account</a></li>
             <?php endif; ?>
         </ul>

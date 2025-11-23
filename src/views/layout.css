@@ -110,6 +110,9 @@ nav{
 }
 
 .navbar_link_container {
+    display: list-item;
+
+
     position: relative;
     font-size: 2rem;
     overflow: hidden;
@@ -117,6 +120,11 @@ nav{
 }
 
 .navbar_link{
+    background: none;
+    border:none;
+    font-size: 2rem;
+    cursor: pointer;
+
     color: var(--navbar-text);
     transition: .3s all ease;
 }

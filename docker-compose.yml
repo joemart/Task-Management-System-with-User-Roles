@@ -26,6 +26,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data  # Persistent data
       - ./src/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql  # SQL to execute on startup
+      - ./src/migrations/seed.sql:/docker-entrypoint-initdb.d/seed.sql  # SQL seed
     ports:
       - "5432:5432"
 
