@@ -58,9 +58,9 @@ BEGIN
     -- Grant the appropriate role based on the role_id
     CASE NEW.role_id
         WHEN 'Admin' THEN
-            EXECUTE format('GRANT Admin TO %I', NEW.username);
+            EXECUTE format('GRANT "Admin" TO %I', NEW.username);
         WHEN 'Manager' THEN
-            EXECUTE format('GRANT Manager TO %I', NEW.username);
+            EXECUTE format('GRANT "Manager" TO %I', NEW.username);
         WHEN 'Regular User' THEN
             EXECUTE format('GRANT "Regular User" TO %I', NEW.username);
         -- 'Regular User' gets no additional privileges

@@ -10,25 +10,10 @@ class Register {
     }
 
 
-    public function register(string $username, string $name, string $email, string $password, string $role_id = "Regular User"){
-        
-           
 
+    public function addUser(string $username, string $name, string $email, string $hashed, string $role_id = "Regular User"){
 
         try{
-            
-            //Flush errors
-            Validator::flush_errors();
-
-            //Validate
-            Validator::validate_all($username, $name, $email, $password);
-
-            //Sanitize
-            Validator::sanitize_all($username, $email, $name, $password);
-
-            //hashed password
-            $hashed = password_hash($password, PASSWORD_DEFAULT);
-
             //Query
 
             $stmt = $this->db->prepare("INSERT INTO users 
@@ -49,12 +34,10 @@ class Register {
             
         }  catch (PDOException $e){
             if($e->getCode() == "42710")
-                throw new Exception("Username already exists!");
-        } catch (Exception $e){
+                $_SESSION["registration_errors"] = "Username already exists!";
 
-            //catch any errors
             header("Location: /register");
-
+            
         }
         exit;
     }

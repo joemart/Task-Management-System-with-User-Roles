@@ -51,8 +51,22 @@ class Model {
         return false;
     }
 
+
+
+    public function verifyPassword(string $password){
+
+        if(password_verify($password, $this->user["password"]))
+            return true;
+
+        $_SESSION["login_errors"] = password_verify($password, $this->user["password"]) ? "" : "Authentication failed";
+        return false;
+
+    }
+
+
+
     public function flush_errors(){
-        $_SESSION["login_errors"] = [];
+        $_SESSION["login_errors"] = null;
     }
 
 

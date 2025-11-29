@@ -29,7 +29,7 @@ class Validator {
     * @param string $subject The input from the form
     *
     */
-    public static function validate_regexp(string $type, string $subject){
+    public static function validate_regexp(string $type, string $subject) : bool{
 
             if(!preg_match(self::PATTERNS[$type], $subject)){
                 $errorMessage = match($type){
@@ -54,7 +54,7 @@ class Validator {
     * @param string $email The email input from the form
     *
     */
-    public static function validate_email(string $email){
+    public static function validate_email(string $email):bool{
         
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $_SESSION["validation_errors"]["email"] = "$email is an invalid email.";
@@ -76,14 +76,16 @@ class Validator {
     *
     */
 
-    public static function validate_all(string $username,string $name,string $email,string $password){
+    public static function validate_all(string $username,string $name,string $email,string $password):bool {
         
         $isValid =  self::validate_regexp("username", $username) &
                     self::validate_regexp("name", $name) &
                     self::validate_regexp("password", $password) &
                     self::validate_email($email) ;
 
-        if(!$isValid) throw new Exception();
+        if(!$isValid) return false;
+        return true;
+
     }
 
     /*
@@ -93,7 +95,10 @@ class Validator {
     */
 
     public static function flush_errors(){
-        $_SESSION["validation_errors"] = [];
+        $_SESSION["validation_errors"] = null;
+        $_SESSION["registration_errors"] = null;
+        
+        
     }
 
     /**
@@ -106,7 +111,7 @@ class Validator {
     *
     */
 
-    public static function sanitize(string $value){
+    public static function sanitize(string $value) : string{
         return htmlspecialchars(trim($value));
     }
 
@@ -124,4 +129,6 @@ class Validator {
             self::sanitize($value);
         }
     }
+
+
 }

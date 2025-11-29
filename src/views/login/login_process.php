@@ -16,9 +16,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    if($login->isUser($username, $email)){
+    if($login->isUser($username, $email) & $login->verifyPassword($password)){
         
         $login->login();
+    }else{
+        header("Location: /login");
+        exit;
     }
 
 }
