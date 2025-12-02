@@ -10,82 +10,22 @@ if (session_status() === PHP_SESSION_NONE)
 class Model {
 
     private $db;
-    private $user;
-
+    
     public function __construct($db){
         $this->db = $db;
     }
 
-
-    //Add password verification
-
-    public function isUser($user, $email){
-        try{
-            $this->flush_errors();
-
-                    if(isset($user)){
-                    $stmt = $this->db->prepare("SELECT * from users WHERE username = :user");
-                    $stmt->execute(["user" => $user]);
-                    $this->user = $stmt->fetch(\PDO::FETCH_ASSOC);
-                    if($this->user) return true;
-                    throw new Exception("Could not find user with the name of ". $user);
-            }
-
-                if(isset($email)){
-                    $stmt = $this->db->prepare("SELECT * from users WHERE email = :email");
-                    $stmt->execute(["email" => $email]);
-                    $this->user = $stmt->fetch(\PDO::FETCH_ASSOC);
-                    if($this->user) return true;
-                    throw new Exception("Could not find user with the email of ". $email);
-            }
-            
-
-        }catch(Exception $e){
-            
-            $_SESSION["login_errors"] = $e->getMessage();
-            header("Location: /login");
-            exit;
-        }
-        
-
-        return false;
-    }
-
-
-
-    public function verifyPassword(string $password){
-
-        if(password_verify($password, $this->user["password"]))
-            return true;
-
-        $_SESSION["login_errors"] = password_verify($password, $this->user["password"]) ? "" : "Authentication failed";
-        return false;
-
-    }
-
-
-
-    public function flush_errors(){
-        $_SESSION["login_errors"] = null;
-    }
-
-
-
-    public function login(){
-        foreach($this->user as $key=>$value){
-            $_SESSION[$key] = $value;
+    public function findByUsername($user){
+            $stmt = $this->db->prepare("SELECT * from users WHERE username = :user");
+            $stmt->execute(["user" => $user]);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         }
 
-        header("Location: /");
-        exit;
+    public function findByEmail($email){
+        $stmt = $this->db->prepare("SELECT * from users WHERE email = :email");
+        $stmt->execute(["email" => $email]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function logout(){
-
-        session_destroy();
-
-        header("Location: /");
-        exit;
-    }
 
 }

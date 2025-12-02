@@ -1,14 +1,10 @@
 <?php
 
 require_once BASE_PATH . '/config/database.php';
-require_once BASE_PATH . '/models/Login.php';
-
-use \Login\Model;
-
-
+require_once BASE_PATH . '/controllers/LoginController.php';
 
 $database = Database::getInstance();
 $db = $database->getConnection();
-$logout = new Model($db);
+$logout = new LoginController($db);
 
 $logout->logout();

@@ -1,14 +1,13 @@
 <?php 
 
 require_once BASE_PATH . '/config/database.php';
-require_once BASE_PATH . '/models/Login.php';
+require_once BASE_PATH . '/controllers/LoginController.php';
 require_once BASE_PATH . "/validator/LoginValidator.php";
 
-use Login\Model;
 
 $database = Database::getInstance();
 $db = $database->getConnection();
-$login = new Model($db);
+$login = new LoginController($db);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
